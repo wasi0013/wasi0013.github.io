@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<title>Tic-Tac-Toe</title>
+<link rel="stylesheet" href="stylesheets/stylesheet.css" media="screen"/>
+<link rel="stylesheet" href="stylesheets/bootstrap.css" media="screen"/>
+<link rel="stylesheet" href="stylesheets/bootstrap-theme.css" media="screen"/>
+
+<body>
+
+<div class="well">
+<h1> Tic-Tac-Toe</h1>
+
+<p>
+  Two player version of the tic-tac-toe.
+  just click on the buttons. Press Play again! to restart
+
+</p>
+
+<button id="button1" onclick="pickSquare(button1)"></button>
+<button id="button2" onclick="pickSquare(button2)"></button>
+<button id="button3" onclick="pickSquare(button3)"></button>
+</br>
+<button id="button4" onclick="pickSquare(button4)"></button>
+<button id="button5" onclick="pickSquare(button5)"></button>
+<button id="button6" onclick="pickSquare(button6)"></button>
+</br>
+<button id="button7" onclick="pickSquare(button7)"></button>
+<button id="button8" onclick="pickSquare(button8)"></button>
+<button id="button9" onclick="pickSquare(button9)"></button>
+<p>
+
+<button id="playbutton" onclick= "resetGame()">Play Again!</button></p>
+<p>Next Turn:  
+  <select id = "selectTurn">
+  <option>X</option>
+  <option>O</option>
+  </select>
+</p>
+</div>
+</body>
+<script type="text/javascript" src="javascripts/script.js"></script>
+
+<footer>
+  Created by Wasi
+</footer>
+</html>

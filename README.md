@@ -7,9 +7,9 @@ List:
 
 Games:
 ---------
-	- [x] [Tic-Tac-Toe](http://wasi0013.github.io/tic-tac-toe)
+- [x] [Tic-Tac-Toe](http://wasi0013.github.io/tic-tac-toe)
 
 Tutorial:
 -----------
 
-	- [x] [Brainfuck Programming Language Tutorial(Bangla)](http://wasi0013.github.io/Bangla-Brainfuck-tutorial/)
+- [x] [Brainfuck Programming Language Tutorial(Bangla)](http://wasi0013.github.io/Bangla-Brainfuck-tutorial/)

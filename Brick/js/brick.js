@@ -21,6 +21,10 @@ var paddlecolor = "#FFFFFF";
 var ballcolor = "#FFFFFF";
 var backcolor = "#000000";
 var score=0;
+var delayx = 1;
+var  delayy= null; // To keep under proper scope
+
+
 
 function init() {
   $("#start").attr('disabled','disabled');
@@ -137,7 +141,7 @@ function draw() {
     dy = -dy;
     bricks[row][col] = 0;
     score++;
-    if(score==rows*columns){
+    if(score%(rows*columns)==0){
       clearInterval(intervalId);
       c.fillStyle="#000";
       clear();
@@ -148,10 +152,9 @@ function draw() {
       c.font="bold 14px 'Century Gothic', Arial";
 
       c.fillText("You scored: "+score+"!",80,180);
-      score=0;
-      //start button disabled when the game is running
-      $("#start").removeAttr("disabled");
-
+      alert("Get ready for next round");
+      clear();
+      init();
 
     }
 
@@ -176,10 +179,9 @@ function draw() {
 
       c.fillText("GAME OVER",75,150);
       c.font="bold 14px 'Century Gothic', Arial";
-
       c.fillText("Your score: "+score,110,180);
       score=0;
-      //start button disabled when the game is running
+      //start button enabled which was disabled
       $("#start").removeAttr("disabled");
       
 

@@ -23,6 +23,7 @@ var backcolor = "#000000";
 var score=0;
 
 function init() {
+  $("#start").attr('disabled','disabled');
   c = $('#canvas')[0].getContext("2d");
   width = $("#canvas").width();
   height = $("#canvas").height();
@@ -136,6 +137,23 @@ function draw() {
     dy = -dy;
     bricks[row][col] = 0;
     score++;
+    if(score==rows*columns){
+      clearInterval(intervalId);
+      c.fillStyle="#000";
+      clear();
+      c.fillStyle="#fff";
+      c.font="bold 26px 'Century Gothic', Arial";
+
+      c.fillText("You Won!",75,150);
+      c.font="bold 14px 'Century Gothic', Arial";
+
+      c.fillText("You scored: "+score+"!",80,180);
+      score=0;
+      //start button disabled when the game is running
+      $("#start").removeAttr("disabled");
+
+
+    }
 
   }
  
@@ -161,6 +179,8 @@ function draw() {
 
       c.fillText("Your score: "+score,110,180);
       score=0;
+      //start button disabled when the game is running
+      $("#start").removeAttr("disabled");
       
 
     }

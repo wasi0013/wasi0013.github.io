@@ -7,6 +7,8 @@ List:
 
 Games:
 ---------
+
+- [x] [Classic Brick Breaker](http://wasi0013.github.io/Brick)
 - [x] [Tic-Tac-Toe](http://wasi0013.github.io/tic-tac-toe)
 
 Tutorial:

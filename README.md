@@ -1,6 +1,10 @@
-Github Pages
+Collectin of Github Pages
 ==================
-all the github pages I've created so far...
+All the github pages, I've created so far in one place...
+
+##Website
+
+[Click here](http://wasi0013.github.io/) to visit the main page  
 
 List:
 ---------
@@ -8,8 +12,8 @@ List:
 Games:
 ---------
 
-- [x] [Classic Brick Breaker](http://wasi0013.github.io/Brick)
-- [x] [Tic-Tac-Toe](http://wasi0013.github.io/tic-tac-toe)
+- [x] [Classic Brick Breaker](http://wasi0013.github.io/Brick) (HTML games Using Javascript and Jquery)
+- [x] [Tic-Tac-Toe](http://wasi0013.github.io/tic-tac-toe) (HTML multiplayer games Using Javascript html)
 
 Tutorial:
 -----------

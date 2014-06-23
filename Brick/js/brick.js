@@ -68,7 +68,6 @@ function init() {
   backcolor = "#000000"
   initbricks()
   intervalId = setInterval(draw, 10)
-  score=0
   multiplier=1
 }
 

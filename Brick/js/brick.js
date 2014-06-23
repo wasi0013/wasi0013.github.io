@@ -168,7 +168,7 @@ function draw() {
       c.fillText("You Won!",75,150)
       c.font="bold 14px 'Century Gothic', Arial"
 
-      c.fillText("You counterd: "+score+"!",80,180)
+      c.fillText("You scored: "+score+"!",80,180)
       alert("Get ready for next round")
       clear()
       init()
@@ -197,7 +197,7 @@ function draw() {
 
       c.fillText("GAME OVER",75,150)
       c.font="bold 14px 'Century Gothic', Arial"
-      c.fillText("Your counter: "+counter,110,180)
+      c.fillText("Your score: "+score,110,180)
       counter=score=0
       multiplier=1
       //start button enabled which was disabled

@@ -59,11 +59,11 @@ function init() {
   brickheight = 15
   padding = 1
   ballRadius = 10
-  rowcolors = ["#FF1C0A", "#FFFD0A", "#00A308", "#0008DB", "#EB0093"]
+  rowcolors = ["red", "green", "yellow", "blue", "violet","orange","white"]
   rowcolors =knuth_shuffle(rowcolors)
-  paddlecolor = "#FFFFFF"
-  ballcolor = "#FFFFFF"
-  backcolor = "#000000"
+  paddlecolor = "white"
+  ballcolor = "white"
+  backcolor = "black"
   initbricks()
   intervalId = setInterval(draw, 10)
   multiplier=1
@@ -131,9 +131,9 @@ function drawbricks() {
 }
 function startScreen(){
   c = $('#canvas')[0].getContext("2d")
-  c.fillStyle="#000"
+  c.fillStyle="black"
   rect(0,0,width,height)
-  c.fillStyle="#fff"
+  c.fillStyle="white"
   c.font="bold 20px 'Century Gothic', Arial"
   c.fillText("Classic Brick Breaker",50,150)
   c.font="bold 14px 'Century Gothic', Arial"
@@ -170,9 +170,9 @@ function draw() {
     if(counter%(rows*columns)==0){
 
       clearInterval(intervalId)
-      c.fillStyle="#000"
+      c.fillStyle="black"
       clear()
-      c.fillStyle="#fff"
+      c.fillStyle="white"
       c.font="bold 26px 'Century Gothic', Arial"
 
       c.fillText("You Won!",75,150)
@@ -200,9 +200,9 @@ function draw() {
     }
     else if (y + dy + ballRadius > height){
       clearInterval(intervalId)
-      c.fillStyle="#000"
+      c.fillStyle="black"
       clear()
-      c.fillStyle="#fff"
+      c.fillStyle="white"
       c.font="bold 26px 'Century Gothic', Arial"
 
       c.fillText("GAME OVER",75,150)

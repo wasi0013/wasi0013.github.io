@@ -20,7 +20,7 @@ var rowcolors = ["#FF1C0A", "#FFFD0A", "#00A308", "#0008DB", "#EB0093"]
 var paddlecolor = "#FFFFFF"
 var ballcolor = "#FFFFFF"
 var backcolor = "#000000"
-var counter=0, score=0,multiplier=1
+var counter=0, score=0,multiplier=1,highscore=0
 
 
 function knuth_shuffle(array) {
@@ -122,7 +122,7 @@ function drawbricks() {
     c.fillStyle = rowcolors[i]
     for (j=0; j < columns; j++) {
       if (bricks[i][j] == 1) {
-        rect((j * (brickwidth + padding)) + padding, 
+        rect((j* (brickwidth + padding)) + padding, 
              (i * (brickheight + padding)) + padding,
              brickwidth, brickheight)
       }
@@ -139,8 +139,41 @@ function startScreen(){
   c.font="bold 14px 'Century Gothic', Arial"
 
   c.fillText("Click Start! to play",90,180)
+  c.clearRect(300, 0, 370, 300)
+  c.fillStyle ="black"
+  rect(300, 0, 370, 300)
+  c.fillStyle="white"
+  rect(300,0,1,300)
+  c.fillStyle="white"
+  rect(301,0,1,300)
+  c.fillStyle="white"
+  rect(301,150,370,2)
+  c.fillStyle = "white"
+  c.fillText("Score",310,20)
+  c.fillText(score,310,50)
+  c.fillText("Highest",310,170)
+  c.fillText(highscore,310,200)
 
 
+
+}
+function drawScore(){
+  c.clearRect(300, 0, 370, 300)
+  c.fillStyle ="black"
+  rect(300, 0, 370, 300)
+  c.fillStyle="white"
+  rect(300,0,1,300)
+  c.fillStyle="white"
+  rect(301,0,1,300)
+  c.fillStyle="white"
+  rect(301,150,370,2)
+  
+  c.fillStyle = "white"
+  c.fillText("Score",310,20)
+  c.fillText(score,310,50)
+
+  c.fillText("Highest",310,170)
+  c.fillText(highscore,310,200)
 }
 
 
@@ -156,6 +189,8 @@ function draw() {
   rect(paddlex, height-paddleh, paddlew, paddleh)
 
   drawbricks()
+  drawScore()
+
 
   rowheight = brickheight + padding
   colwidth = brickwidth + padding
@@ -175,10 +210,9 @@ function draw() {
       c.fillStyle="white"
       c.font="bold 26px 'Century Gothic', Arial"
 
-      c.fillText("You Won!",75,150)
+      c.fillText("Round clear!",75,150)
       c.font="bold 14px 'Century Gothic', Arial"
 
-      c.fillText("You scored: "+score+"!",80,180)
       alert("Get ready for next round")
       clear()
       init()
@@ -208,6 +242,7 @@ function draw() {
       c.fillText("GAME OVER",75,150)
       c.font="bold 14px 'Century Gothic', Arial"
       c.fillText("Your score: "+score,110,180)
+      if(score>highscore)highscore=score
       counter=score=0
       multiplier=1
       //start button enabled which was disabled

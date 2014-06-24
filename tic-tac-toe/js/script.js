@@ -57,7 +57,9 @@ playbutton.addEventListener("click", resetGame);
 //todo create an ai for tic-tac-toe
 
 //check wheather two in a row or not
+function ai(){
 function twoinarow(player){
+
 }
 
 //Win:if you have two in a row, you can place a third to get three in a row.
@@ -100,9 +102,5 @@ function emptyside(player){
 
 
 }
-
-function ai(player){
-
-
 
 }

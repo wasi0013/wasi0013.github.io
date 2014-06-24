@@ -3,8 +3,8 @@ var y
 var dx 
 var dy 
 var c
-var width
-var height
+var width=300
+var height=300
 var paddlex,paddleh = 10,paddlew = 75
 var rightDown = false,leftDown = false
 var canvasMinX, canvasMaxX
@@ -42,8 +42,6 @@ function knuth_shuffle(array) {
 function init() {
   $("#start").attr('disabled','disabled')
   c = $('#canvas')[0].getContext("2d")
-  width = $("#canvas").width()
-  height = $("#canvas").height()
   paddlex = width / 2
   brickwidth = (width/columns) - 1
   canvasMinX = $("#canvas").offset().left
@@ -134,7 +132,7 @@ function drawbricks() {
 function startScreen(){
   c = $('#canvas')[0].getContext("2d")
   c.fillStyle="#000"
-  rect(0,0,300,300)
+  rect(0,0,width,height)
   c.fillStyle="#fff"
   c.font="bold 20px 'Century Gothic', Arial"
   c.fillText("Classic Brick Breaker",50,150)

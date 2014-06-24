@@ -131,6 +131,19 @@ function drawbricks() {
     }
   }
 }
+function startScreen(){
+  c = $('#canvas')[0].getContext("2d")
+  c.fillStyle="#000"
+  rect(0,0,300,300)
+  c.fillStyle="#fff"
+  c.font="bold 20px 'Century Gothic', Arial"
+  c.fillText("Classic Brick Breaker",50,150)
+  c.font="bold 14px 'Century Gothic', Arial"
+
+  c.fillText("Click Start! to play",90,180)
+
+
+}
 
 
 function draw() {
@@ -201,6 +214,7 @@ function draw() {
       multiplier=1
       //start button enabled which was disabled
       $("#start").removeAttr("disabled")
+
       
 
     }

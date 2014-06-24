@@ -212,9 +212,10 @@ function draw() {
 
       c.fillText("Round clear!",75,150)
       c.font="bold 14px 'Century Gothic', Arial"
-
+      drawScore()
       alert("Get ready for next round")
       clear()
+
       init()
 
     }
@@ -226,6 +227,9 @@ function draw() {
 
   if (y + dy - ballRadius < 0)
     dy = -dy
+    
+
+  
   else if (y + dy + ballRadius > height - paddleh) {
     if (x > paddlex && x < paddlex + paddlew) {
       dx = 8 * ((x-(paddlex+paddlew/2))/paddlew)

@@ -11,10 +11,8 @@ function signinCallback(authResult) {
         url: "https://www.googleapis.com/plus/v1/people/",
         data: {
           "userId":"me",
-          
+        },
 
-
-        }
         type: 'GET',
         dataType: 'json',
         success: function(data) {

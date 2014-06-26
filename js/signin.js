@@ -5,7 +5,7 @@
      })();
 function signinCallback(authResult) {
   if (authResult['status']['signed_in']) {
-    alert("Sign in Successful"+JSON.parse(authResult));
+    alert("Sign in Successful");
 
     $.ajax({
         url: "https://www.googleapis.com/plus/v1/people/me",

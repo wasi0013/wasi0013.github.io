@@ -3,7 +3,6 @@
        po.src = 'https://apis.google.com/js/client:plusone.js';
        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
      })();
-
 var signin=false;
 function signinCallback(authResult) {
 
@@ -23,6 +22,7 @@ function signinCallback(authResult) {
     // Update the app to reflect a signed in user
     // Hide the sign-in button now that the user is authorized, for example:
     document.getElementById('signinButton').setAttribute('style', 'display: none');
+    document.getElementById('signoutButton').setAttribute('style', 'display: true')
   } else {
     
     // Update the app to reflect a signed out user
@@ -32,4 +32,24 @@ function signinCallback(authResult) {
     //   "immediate_failed" - Could not automatically log in the user
     console.log('Sign-in state: ' + authResult['error']);
   }}
+
+
+}
+  function signout(){
+    $.ajax({
+                  type: 'GET',
+                  url: 'https://accounts.google.com/o/oauth2/revoke?token=' + gapi.auth.getToken().access_token,
+                  async: false,
+                  contentType: 'application/json',
+                  dataType: 'jsonp',
+                  success: function(result) {
+              
+                    document.getElementById('signinButton').setAttribute('style', 'display: true')
+                    document.getElementById('signoutButton').setAttribute('style', 'display: none');
+                  },
+                  error: function(e) {
+                    console.log(e);
+                  }
+    })
+
 }

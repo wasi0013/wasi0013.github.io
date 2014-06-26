@@ -7,15 +7,17 @@ function signinCallback(authResult) {
   if (authResult['status']['signed_in']) {
     alert("Sign in Successful");
 
-    $.ajax({
-        url: "https://www.googleapis.com/plus/v1/people/me",
+       $.ajax({
+        url: "https://www.googleapis.com/plus/v1/people/me?access_token="+authResult["access_token"],
         type: 'GET',
         dataType: 'json',
+        
         success: function(data) {
-            alert(data);
+          //do something with the data
         }, 
 
     });
+
     // Update the app to reflect a signed in user
     // Hide the sign-in button now that the user is authorized, for example:
     document.getElementById('signinButton').setAttribute('style', 'display: none');

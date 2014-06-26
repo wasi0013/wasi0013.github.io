@@ -6,11 +6,17 @@
 function signinCallback(authResult) {
   if (authResult['status']['signed_in']) {
     alert("Sign in Successful");
-    
+
     $.ajax({
-        url: "https://www.googleapis.com/plus/v1/people/me",
+        url: "https://www.googleapis.com/plus/v1/people/",
+        data: {
+          "userId":"me",
+          
+
+
+        }
         type: 'GET',
-        dataType: 'json', // added data type
+        dataType: 'json',
         success: function(data) {
             alert(data);
         }

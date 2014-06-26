@@ -10,7 +10,7 @@ function signinCallback(authResult) {
     $.ajax({
         url: "https://www.googleapis.com/plus/v1/people/",
         data: {
-          userId:"me",
+          userId="me",
         },
 
         type: 'GET',

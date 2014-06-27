@@ -22,7 +22,7 @@ function signinCallback(authResult) {
     // Update the app to reflect a signed in user
     // Hide the sign-in button now that the user is authorized, for example:
     document.getElementById('signinButton').setAttribute('style', 'display: none');
-    document.getElementById('signoutButton').setAttribute('style', 'display: true')
+    document.getElementById('signoutButton').setAttribute('style', 'display: inline')
   } else {
     
     // Update the app to reflect a signed out user
@@ -44,8 +44,8 @@ function signinCallback(authResult) {
                   dataType: 'jsonp',
                   success: function(result) {
               
-                    document.getElementById('signinButton').setAttribute('style', 'display: true')
-                    document.getElementById('signoutButton').setAttribute('style', 'display: none');
+                    document.getElementById('signinButton').setAttribute('style', 'display: inline')
+                    document.getElementById('signoutButton').setAttribute('style', 'display: none')
                   },
                   error: function(e) {
                     console.log(e);

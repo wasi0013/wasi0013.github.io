@@ -6,15 +6,34 @@
 function signinCallback(authResult) {
 
   if (authResult['status']['signed_in']) {
-    signin=true
     $.ajax({
         url: "https://www.googleapis.com/plus/v1/people/me?access_token="+authResult["access_token"],
         type: 'GET',
         dataType: 'json',
         
         success: function(data) {
-          alert("Welcome! "+data["displayName"]+" you are logged in!")
+          console.log(data)
+          $.ajax({
+        url: "https://hiren-game.herokuapp.com",
+        type: 'POST',
+        data: {
+          name:data["displayName"],
+          id:data["id"],
+
+
+        },
+        dataType: 'json',
+        
+        success: function(data) {
+          console.log("hiren login stats: "+data)
+          
         }, 
+
+    })
+        },
+        
+
+
 
     })
     // Update the app to reflect a signed in user

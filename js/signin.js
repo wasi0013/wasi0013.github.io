@@ -13,23 +13,16 @@ function signinCallback(authResult) {
         
         success: function(data) {
           console.log(data)
-          $.ajax({
-        url: "https://hiren-game.herokuapp.com",
-        type: 'POST',
-        data: {
-          name:data["displayName"],
-          id:data["id"],
+          var formData = new FormData();
 
-
-        },
-        dataType: 'json',
-        
-        success: function(data) {
-          console.log("hiren login stats: "+data)
-          
-        }, 
-
-    })
+          formData.append("name", data["displayName"]);
+          formData.append("id", data["id"]); 
+          var request = new XMLHttpRequest();
+          request.open("POST", "http://hiren-game.herokuapp.com/");
+          request.send(formData);
+          console.log("Rest Status: "+request.status);
+          console.log("Rest error: "+request.error);
+          console.log("Rest responseText: "+request.responseText);
         },
         
 

@@ -3,12 +3,10 @@
        po.src = 'https://apis.google.com/js/client:plusone.js';
        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
      })();
-var signin=false;
 function signinCallback(authResult) {
 
-  if(!signin){if (authResult['status']['signed_in']) {
-    signin=true;
-
+  if (authResult['status']['signed_in']) {
+    signin=true
     $.ajax({
         url: "https://www.googleapis.com/plus/v1/people/me?access_token="+authResult["access_token"],
         type: 'GET',
@@ -18,12 +16,15 @@ function signinCallback(authResult) {
           alert("Welcome! "+data["displayName"]+" you are logged in!")
         }, 
 
-    });
+    })
     // Update the app to reflect a signed in user
     // Hide the sign-in button now that the user is authorized, for example:
     document.getElementById('signinButton').setAttribute('style', 'display: none');
     document.getElementById('signoutButton').setAttribute('style', 'display: inline')
   } else {
+    document.getElementById('signinButton').setAttribute('style', 'display: inline')
+    document.getElementById('signoutButton').setAttribute('style', 'display: none')
+                 
     
     // Update the app to reflect a signed out user
     // Possible error values:
@@ -31,7 +32,7 @@ function signinCallback(authResult) {
     //   "access_denied" - User denied access to your app
     //   "immediate_failed" - Could not automatically log in the user
     console.log('Sign-in state: ' + authResult['error']);
-  }}
+  }
 
 
 }

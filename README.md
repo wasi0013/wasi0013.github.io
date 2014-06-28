@@ -19,3 +19,9 @@ Tutorial:
 -----------
 
 - [x] [Brainfuck Programming Language Tutorial(Bangla)](http://wasi0013.github.io/Bangla-Brainfuck-tutorial/)
+
+##Features:
+
+- [x] Google Sign in/ Sign out for saving gamescore using Google Authentication
+- [ ] Connect the [rest server](https://github.com/pyprism/Hiren-game) to save gamescore (to do)
+- [ ] Game score-card (to do)

@@ -13,6 +13,8 @@ function signinCallback(authResult) {
         
         success: function(data) {
           console.log(data)
+          /**
+          //Need Fixing
           var formData = new FormData();
 
           formData.append("name", data["displayName"]);
@@ -23,6 +25,7 @@ function signinCallback(authResult) {
           console.log("Rest Status: "+request.status);
           console.log("Rest error: "+request.error);
           console.log("Rest responseText: "+request.responseText);
+          */
         },
         
 

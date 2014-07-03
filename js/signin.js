@@ -3,9 +3,147 @@
        po.src = 'https://apis.google.com/js/client:plusone.js';
        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
      })();
+
+function createCORSRequest(method, url) {
+  var xhr = new XMLHttpRequest();
+  if ("withCredentials" in xhr) {
+    // XHR for Chrome/Firefox/Opera/Safari.
+    xhr.open(method, url, true);
+  } else if (typeof XDomainRequest != "undefined") {
+    // XDomainRequest for IE.
+    xhr = new XDomainRequest();
+    xhr.open(method, url);
+  } else {
+    // CORS not supported.
+    xhr = null;
+  }
+  return xhr;
+}
+
+
+var username=undefined
+var userid=undefined
+var highscore=0
+
+function updateScore(){
+    if(userid!=undefined){
+    var formData = new FormData();
+          formData.append("id", userid); 
+          formData.append("game","brick");
+          formData.append("score",highscore);
+          $.ajax({
+            //updating scores 
+            url: 'http://hiren-game.herokuapp.com/update_score',
+            type: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function(data){
+              console.log("Running update score:success")
+              console.log(data);
+            },
+            error: function(e) {
+              console.log("Running update score:fail")
+                    var ajaira=JSON.parse(e.responseText)
+                    console.log(ajaira)
+                  }
+
+
+          })
+
+  }
+}
+
+function showResult(){
+    if(userid!=undefined){
+          var formData = new FormData();
+          formData.append("id", userid); 
+          formData.append("game","brick");
+          $.ajax({
+            //result 
+            url: 'http://hiren-game.herokuapp.com/result',
+            type: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function(data){
+              console.log("running result:success")
+              console.log(data)
+              highscore=data["score"]
+              console.log(data["score"])
+
+            },
+            error: function(e) {
+              console.log("running result:fail")
+                  var ajaira=JSON.parse(e.responseText)
+                    console.log(ajaira)
+                  }
+
+
+          })
+          
+    }
+}
+
+function createUser(formData){
+  $.ajax({
+            //login checks for creating new user 
+            url: 'http://hiren-game.herokuapp.com/',
+            type: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function(data){
+              console.log("Creating user: success ")
+              console.log(data)
+              
+            },
+            error: function(e) {
+                    var ajaira=JSON.parse(e.responseText)
+                    console.log("Registering new users: fails");
+                    console.log(ajaira.status);
+                  }
+
+
+          })
+
+
+
+
+}
+function createGame(formData){
+  $.ajax({
+            url: 'http://hiren-game.herokuapp.com/create_game',
+            type: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function(data){
+              console.log("creating game entry:success")
+             console.log(data)
+            },
+            error: function(e) {
+                    console.log("Creating game entry:fail")
+                    var ajaira=JSON.parse(e.responseText)
+                    console.log(ajaira.status);
+                  }
+
+
+          })
+
+
+
+
+}
+
+
+
+
 function signinCallback(authResult) {
 
+
   if (authResult['status']['signed_in']) {
+
     $.ajax({
         url: "https://www.googleapis.com/plus/v1/people/me?access_token="+authResult["access_token"],
         type: 'GET',
@@ -13,20 +151,21 @@ function signinCallback(authResult) {
         
         success: function(data) {
           console.log(data)
-          /**
-          //Need Fixing
+          username=data["displayName"]
+          userid= data["id"]
           var formData = new FormData();
+          formData.append("name",username );
+          formData.append("id", userid);
 
-          formData.append("name", data["displayName"]);
-          formData.append("id", data["id"]); 
-          var request = new XMLHttpRequest();
-          request.open("POST", "http://hiren-game.herokuapp.com/");
-          request.send(formData);
-          console.log("Rest Status: "+request.status);
-          console.log("Rest error: "+request.error);
-          console.log("Rest responseText: "+request.responseText);
-          */
-        },
+          createUser(formData)
+
+          formData = new FormData();
+
+          formData.append("game", "brick");
+          formData.append("id", userid); 
+          createGame(formData)
+          showResult()
+          },
         
 
 
@@ -67,5 +206,7 @@ function signinCallback(authResult) {
                     console.log(e);
                   }
     })
+
+
 
 }

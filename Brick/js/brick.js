@@ -20,7 +20,11 @@ var rowcolors = ["#FF1C0A", "#FFFD0A", "#00A308", "#0008DB", "#EB0093"]
 var paddlecolor = "#FFFFFF"
 var ballcolor = "#FFFFFF"
 var backcolor = "#000000"
-var counter=0, score=0,multiplier=1,highscore=0
+var counter=0, score=0,multiplier=1
+
+
+
+
 
 
 function knuth_shuffle(array) {
@@ -250,6 +254,8 @@ function draw() {
       counter=score=0
       multiplier=1
       //start button enabled which was disabled
+      updateScore();
+      showResult();
       $("#start").removeAttr("disabled")
 
       
@@ -260,6 +266,13 @@ function draw() {
   x += dx
   y += dy
 }
+
+  
+
+
+
+
+
 $(document).keydown(onKeyDown)
 $(document).keyup(onKeyUp)
 $(document).mousemove(onMouseMove)

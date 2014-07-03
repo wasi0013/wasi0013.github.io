@@ -4,23 +4,6 @@
        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
      })();
 
-function createCORSRequest(method, url) {
-  var xhr = new XMLHttpRequest();
-  if ("withCredentials" in xhr) {
-    // XHR for Chrome/Firefox/Opera/Safari.
-    xhr.open(method, url, true);
-  } else if (typeof XDomainRequest != "undefined") {
-    // XDomainRequest for IE.
-    xhr = new XDomainRequest();
-    xhr.open(method, url);
-  } else {
-    // CORS not supported.
-    xhr = null;
-  }
-  return xhr;
-}
-
-
 var username=undefined
 var userid=undefined
 var highscore=0
@@ -39,7 +22,7 @@ function updateScore(){
             processData: false,
             contentType: false,
             success: function(data){
-              console.log("Running update score:success")
+              console.log("Running update score: success")
               console.log(data);
             },
             error: function(e) {
@@ -53,6 +36,19 @@ function updateScore(){
 
   }
 }
+
+var type = (function(global) {
+    var cache = {};
+    return function(obj) {
+        var key;
+        return obj === null ? 'null' // null
+            : obj === global ? 'global' // window in browser or global in nodejs
+            : (key = typeof obj) !== 'object' ? key // basic: string, boolean, number, undefined, function
+            : obj.nodeType ? 'object' // DOM element
+            : cache[key = ({}).toString.call(obj)] // cached. date, regexp, error, object, array, math
+            || (cache[key] = key.slice(8, -1).toLowerCase()); // get XXXX from [object XXXX], and cache it
+    };
+}(this));
 
 function showResult(){
     if(userid!=undefined){
@@ -69,7 +65,8 @@ function showResult(){
             success: function(data){
               console.log("running result:success")
               console.log(data)
-              highscore=data["score"]
+              if(type(data["score"])==="number")highscore=data["score"]
+              else highscore=0
               console.log(data["score"])
 
             },

@@ -65,9 +65,9 @@ function showResult(){
             success: function(data){
               console.log("running result:success")
               console.log(data)
-              if(type(data["score"])==="number")highscore=data["score"]
+              if(type(data["score"])==="string")highscore=(data["score"]+0)
               else highscore=0
-              console.log(data["score"])
+              console.log(data["score"],type(data["score"]))
 
             },
             error: function(e) {

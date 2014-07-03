@@ -23,5 +23,5 @@ Tutorial:
 ##Features:
 
 - [x] Google Sign in/ Sign out for saving gamescore using Google Authentication
-- [ ] Connect the [rest server](https://github.com/pyprism/Hiren-game) to save gamescore (to do)
+- [x] Connect the [rest server](https://github.com/pyprism/Hiren-game) to save gamescore
 - [ ] Game score-card (to do)

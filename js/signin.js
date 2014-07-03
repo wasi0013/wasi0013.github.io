@@ -8,12 +8,12 @@ var username=undefined
 var userid=undefined
 var highscore=0
 
-function updateScore(){
+function updateScore(score){
     if(userid!=undefined){
     var formData = new FormData();
           formData.append("id", userid); 
           formData.append("game","brick");
-          formData.append("score",highscore);
+          formData.append("score",score);
           $.ajax({
             //updating scores 
             url: 'http://hiren-game.herokuapp.com/update_score',
@@ -65,9 +65,8 @@ function showResult(){
             success: function(data){
               console.log("running result:success")
               console.log(data)
-              if(type(data["score"])==="string")highscore=(data["score"]+0)
-              else highscore=0
-              console.log(data["score"],type(data["score"]))
+              highscore=data["score"]
+              console.log("Types of data : "+type(data["score"]))
 
             },
             error: function(e) {
@@ -93,7 +92,10 @@ function createUser(formData){
             success: function(data){
               console.log("Creating user: success ")
               console.log(data)
-              
+              formData = new FormData()
+              formData.append("game", "brick")
+              formData.append("id", userid) 
+              createGame(formData)             
             },
             error: function(e) {
                     var ajaira=JSON.parse(e.responseText)
@@ -118,6 +120,7 @@ function createGame(formData){
             success: function(data){
               console.log("creating game entry:success")
              console.log(data)
+              updateScore(0)
             },
             error: function(e) {
                     console.log("Creating game entry:fail")
@@ -154,13 +157,7 @@ function signinCallback(authResult) {
           formData.append("name",username );
           formData.append("id", userid);
 
-          createUser(formData)
-
-          formData = new FormData();
-
-          formData.append("game", "brick");
-          formData.append("id", userid); 
-          createGame(formData)
+          createUser(formData)         
           showResult()
           },
         

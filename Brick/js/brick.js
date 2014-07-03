@@ -254,7 +254,7 @@ function draw() {
       counter=score=0
       multiplier=1
       //start button enabled which was disabled
-      updateScore();
+      updateScore(highscore);
       showResult();
       $("#start").removeAttr("disabled")
 

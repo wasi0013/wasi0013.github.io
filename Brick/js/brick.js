@@ -134,6 +134,7 @@ function drawbricks() {
   }
 }
 function startScreen(){
+  allResult()
   c = $('#canvas')[0].getContext("2d")
   c.fillStyle="black"
   rect(0,0,width,height)
@@ -256,6 +257,7 @@ function draw() {
       //start button enabled which was disabled
       updateScore(highscore);
       showResult();
+      allResult()
       $("#start").removeAttr("disabled")
 
       

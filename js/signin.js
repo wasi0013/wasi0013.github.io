@@ -81,6 +81,38 @@ function showResult(){
     }
 }
 
+function allResult(){
+          var formData = new FormData();
+          formData.append("game","brick");
+          $.ajax({
+            //all result 
+            url: 'http://hiren-game.herokuapp.com/all_result',
+            type: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function(data){
+              console.log("running all_result:success")
+              var table='<table class = "table table-bordered"><thead><tr><th>Players Name</th><th>Score</th></tr></thead><tbody>'
+              for(var key in data){
+              table+="<tr>"+"<td>"+data[key]["name"]+"</td>"+"<td>"+data[key]["score"]+"</td>"+"</tr>"  
+              }
+              table+="</tbody></table>"
+              document.getElementById('table').innerHTML = table;
+            },
+            error: function(e) {
+              console.log("running result:fail")
+                  var ajaira=JSON.parse(e.responseText)
+                    console.log(ajaira)
+                  }
+
+
+          })
+          
+    
+}
+
+
 function createUser(formData){
   $.ajax({
             //login checks for creating new user 

@@ -16,15 +16,11 @@ var brickwidth
 var brickheight = 15
 var padding = 1
 var ballr = 10
-var rowcolors = ["#FF1C0A", "#FFFD0A", "#00A308", "#0008DB", "#EB0093"]
-var paddlecolor = "#FFFFFF"
-var ballcolor = "#FFFFFF"
-var backcolor = "#000000"
+var rowcolors = ["red", "green", "yellow", "blue", "violet","orange","white"]
+var paddlecolor = "white"
+var ballcolor = "white"
+var backcolor = "black"
 var counter=0, score=0,multiplier=1
-
-
-
-
 
 
 function knuth_shuffle(array) {
@@ -44,6 +40,8 @@ function knuth_shuffle(array) {
 
 
 function init() {
+  showResult()
+  allResult()
   $("#start").attr('disabled','disabled')
   c = $('#canvas')[0].getContext("2d")
   paddlex = width / 2
@@ -134,6 +132,8 @@ function drawbricks() {
   }
 }
 function startScreen(){
+  
+  showResult()
   allResult()
   c = $('#canvas')[0].getContext("2d")
   c.fillStyle="black"

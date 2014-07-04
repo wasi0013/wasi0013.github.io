@@ -93,9 +93,11 @@ function allResult(){
             contentType: false,
             success: function(data){
               console.log("running all_result:success")
-              var table='<table class = "table table-bordered"><thead><tr><th>Players Name</th><th>Score</th></tr></thead><tbody>'
+              var table='<table class = "table table-bordered"><thead><tr><th>#Rank.</th><th>Players Name</th><th>Score</th></tr></thead><tbody>'
+              var rank=1
               for(var key in data){
-              table+="<tr>"+"<td>"+data[key]["name"]+"</td>"+"<td>"+data[key]["score"]+"</td>"+"</tr>"  
+              table+="<tr>"+"<td>"+rank+"</td><td>"+data[key]["name"]+"</td>"+"<td>"+data[key]["score"]+"</td>"+"</tr>"  
+              rank++
               }
               table+="</tbody></table>"
               document.getElementById('table').innerHTML = table;

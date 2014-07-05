@@ -18,7 +18,8 @@
   <title>Tic-Tac-Toe</title> 
 </head>
 <body role="document">
-  <div class="container theme-showcase" role="main">
+<div class="container theme-showcase" role="main">
+
   <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
@@ -29,17 +30,17 @@
             <span class="icon-bar"></span>
           </button>
           
-          <a class="navbar-brand" href="../">Wasi's Github Page</a>
+          <a class="navbar-brand" href="/index.html">Wasi's Github Page</a>
         </div>
   <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="../index.html">Home</a></li>
+            <li class="active"><a href="/index.html">Home</a></li>
 
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Games<b class="caret"></b></a>
               <ul class="dropdown-menu" role="menu">
-                <li><a href="../Brick/index.html">Brick-Breaker</a></li>
-                <li><a href="../tic-tac-toe/index.html">Tic-Tac-Toe</a></li>
+                <li><a href="/Brick/index.html">Brick-Breaker</a></li>
+                <li><a href="/tic-tac-toe/index.html">Tic-Tac-Toe</a></li>
               </ul>
             </li>
             <li class="dropdown">
@@ -48,30 +49,35 @@
                 <li><a href="http://votingsystem-wasi0013.rhcloud.com/">Online Voting System</a></li>
               </ul>
             </li>
-            <li ><a href='https://github.com/wasi0013/wasi0013.github.io/tree/master/tic-tac-toe'>View on Github</a></li>
+            <li ><a href='https://github.com/wasi0013/wasi0013.github.io/'>View on Github</a></li>
             <li><a href="http://about.me/wasi0013">About Author</a></li>
-          </ul> 
-          <ul class="nav navbar-right">
-            <li ><span id="signinButton" >
-  <span
-    class="g-signin"
-    data-callback="signinCallback"
-    data-clientid="674845778671-arap9of4n54957e0id5vhm9u9lueq0pk.apps.googleusercontent.com"
-    data-cookiepolicy="single_host_origin"
-    data-requestvisibleactions="http://schemas.google.com/AddActivity"
-    data-scope="https://www.googleapis.com/auth/plus.login">
-  </span>
-</span><button id="signoutButton" class="btn btn-primary btn-md btn-danger" style="display:none" onclick="signout()">Sign Out!</button>
-</li>
-
-
-          </ul> 
-         
             
+          </ul>
+          <ul class="nav navbar-right">
+            <li id ="name" style="padding:3px"></li>
+            <li >
+              <span id="signinButton" >
+                  <span
+                      class="g-signin"
+                      data-callback="signinCallback"
+                      data-clientid="674845778671-arap9of4n54957e0id5vhm9u9lueq0pk.apps.googleusercontent.com"
+                      data-cookiepolicy="single_host_origin"
+                      data-requestvisibleactions="http://schemas.google.com/AddActivity"
+                      data-scope="https://www.googleapis.com/auth/plus.login">
+                  </span>
+              </span>
+              <button id="signoutButton" class="btn btn-primary btn-md btn-danger" style="display:none" onclick="signout()">Sign Out!</button>
+
+            </li>
+            
+          </ul>
+          <ul id= "thumb" class="nav navbar-right" style="padding:3px">
+               
+          </ul>
+                     
+    </div>
   </div>
 </div>
-</div>
-
 
 <div class="well"></br>
 <h1> <u><a href="http://wasi0013.github.io/tic-tac-toe">Tic-Tac-Toe</a></u></h1>

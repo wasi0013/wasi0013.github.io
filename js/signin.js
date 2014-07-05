@@ -4,13 +4,14 @@
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
   })();
 
-var username=undefined
-var userid=undefined
+var username=undefined //holds google user name
+var userid=undefined   //holds user id
+var userpic=undefined  //holds user image url
 var highscore=0
 
 function updateScore(score){
   if(userid!=undefined){
-    
+    //executes when user is signed in
     var formData = new FormData();
     formData.append("id", userid); 
     formData.append("game","brick");
@@ -24,17 +25,18 @@ function updateScore(score){
       processData: false,
       contentType: false,
       success: function(data){
-        console.log("Running update score: success")
-        console.log(data);
+        console.log("Score updated")
+        
       },
       error: function(e) {
-        console.log("Running update score:fail")
+        console.log("Score update failed")
         var ajaira=JSON.parse(e.responseText)
         console.log(ajaira)
       }
     })
 
   }
+
 }
 
 var type = (function(global) {
@@ -166,6 +168,10 @@ function signinCallback(authResult) {
         console.log(data)
         username=data["displayName"]
         userid= data["id"]
+        userpic=data["image"]["url"]
+
+        document.getElementById('thumb').innerHTML = '<a href="#" class="thumbnail"><img src="'+userpic+'" alt="'+username+'"></a>'
+        document.getElementById('name').innerHTML = '<li><a href="'+data["url"]+'">'+username+'</a></li>'
         var formData = new FormData();
         formData.append("name",username );
         formData.append("id", userid);
@@ -199,6 +205,10 @@ function signout(){
 
       document.getElementById('signinButton').setAttribute('style', 'display: inline')
       document.getElementById('signoutButton').setAttribute('style', 'display: none')
+      document.getElementById('thumb').innerHTML ="";
+      document.getElementById('name').innerHTML ="";
+      userid=username=userpic=undefined
+
     },
     error: function(e) {
       console.log(e);

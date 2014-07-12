@@ -69,9 +69,9 @@ function showResult(){
     
       success: function(data){
         console.log("running result:success")
-        console.log(data)
+        //console.log(data)
         highscore=data["score"]
-        console.log("Types of data : "+type(data["score"]))
+        //console.log("Types of data : "+type(data["score"]))
 
       },
       error: function(e) {
@@ -95,11 +95,12 @@ function allResult(){
     processData: false,
     contentType: false,
     success: function(data){
+
       console.log("running all_result:success")
       var table='<table class = "table table-bordered"><thead><tr><th>#Rank.</th><th>Players Name</th><th>Score</th></tr></thead><tbody>'
       var rank=1
       for(var key in data){
-      table+="<tr>"+"<td>"+rank+"</td><td>"+data[key]["name"]+"</td>"+"<td>"+data[key]["score"]+"</td>"+"</tr>"  
+      table+="<tr>"+"<td>"+rank+'</td><td><a href="https://plus.google.com/u/0/'+data[key]["id"]+'/posts" target="_blank">'+data[key]["name"]+"</a></td>"+"<td>"+data[key]["score"]+"</td>"+"</tr>"  
       rank++
       }
       table+="</tbody></table>"
@@ -123,7 +124,7 @@ function createUser(formData){
     contentType: false,
     success: function(data){
       console.log("Creating user: success ")
-      console.log(data)
+      //console.log(data)
       formData = new FormData()
       formData.append("game", "brick")
       formData.append("id", userid) 
@@ -146,7 +147,7 @@ function createGame(formData){
     contentType: false,
     success: function(data){
       console.log("creating game entry:success")
-     console.log(data)
+     //console.log(data)
       updateScore(0)
     },
     error: function(e) {
@@ -165,7 +166,7 @@ function signinCallback(authResult) {
       dataType: 'json',
       
       success: function(data) {
-        console.log(data)
+        //console.log(data)
         username=data["displayName"]
         userid= data["id"]
         userpic=data["image"]["url"]
@@ -180,8 +181,9 @@ function signinCallback(authResult) {
         showResult()
         },
     })
-    // Hide the sign-in button now that the user is authorized, for example:
+    // Hide the sign-in button now that the user is authorized
     document.getElementById('signinButton').setAttribute('style', 'display: none');
+    //sign out button
     document.getElementById('signoutButton').setAttribute('style', 'display: inline')
   } else {
     document.getElementById('signinButton').setAttribute('style', 'display: inline')

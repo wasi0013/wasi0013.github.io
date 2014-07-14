@@ -179,6 +179,10 @@ function signinCallback(authResult) {
 
         createUser(formData)         
         showResult()
+        // Hide the sign-in button now that the user is authorized
+        document.getElementById('signinButton').setAttribute('style', 'display: none');
+        //sign out button
+        document.getElementById('signoutButton').setAttribute('style', 'display: inline')
         },
     })
     // Hide the sign-in button now that the user is authorized
